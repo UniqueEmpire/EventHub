@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">EventHub</string>
+    <string name="Title">EventHub</string>
+    <string name="signup">SIGN uP</string>
+    <string name="skip">Skip if you are a user</string>
+    <string name="login">LOGIN</string>
+
+
+    <string name="add1">13/5, Town road, Kandy.</string>
+    <string name="des1">Large Scale ,Wedding and Private Parties</string>
+    <string name="add2">13/5, Galle road, Colombo.</string>
+    <string name="des2">Wedding and Private Parties</string>
+    <string name="welcome">Welcome!</string>
+    <string name="tagline">Create your business account in minutes</string>
+    <string name="logintag">Already have an account?</string>
+    <string name="login2">Login</string>
+    <string name="email">Type the email</string>
+    <string name="wel_back">Welcome Back!</string>
+    <string name="pwd">Type your password</string>
+    <string name="pwd2">Re-type the password</string>
+    <string name="logintag2">Log into your account</string>
+    <string name="signuptag">Don\'t you have a account?</string>
+    <string name="signup2">SignUp</string>
+    <string name="title_activity_sidebar">sidebar</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+</resources>
