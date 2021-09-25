@@ -33,4 +33,39 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
 
+
+    //zihara
+    <string name="title">Recycler view</string>
+    <string name="formtitle">MY PROFILE</string>
+    <string name="comname">Enter Company name</string>
+    <string name="man_name">Manager\'s Name</string>
+    <string name="manname">Enter Manager\'s name</string>
+    <string name="com_name">Company Name</string>
+    <string name="man_num">Manager\'s Phone Number</string>
+    <string name="mannum">Enter Manager\'s phone number</string>
+    <string name="land_num">Office Landline Number</string>
+    <string name="landnum">Enter office landline number</string>
+    <string name="off_address">Office Address</string>
+    <string name="offaddress">Enter office address</string>
+    <string name="cat_type">Catering Type</string>
+    <string name="d_method">Delivery Method</string>
+    <string name="proceed">PROCEED</string>
+    <string name="com_logo">Add Company Logo</string>
+    <string name="location">Location</string>
+    <string name="descrptn">Type your description</string>
+    <string name="time01">Select open time</string>
+    <string name="time2">Select close time</string>
+    <string name="loca">Type The Location</string>
+    <string name="update">Change</string>
+    <string name="week">Select Open Days</string>
+
+    <string-array name="catertype">
+        <item>On-premise</item>
+        <item>Off-premise</item>
+    </string-array>
+    <string-array name="delivertype">
+        <item>Pick Up</item>
+        <item>Delivery</item>
+    </string-array>
+
 </resources>
