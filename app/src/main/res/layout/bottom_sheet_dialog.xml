@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/idRLBSheet"
+    android:background="@color/blue_shade_1">
+
+    <TextView
+        android:id="@+id/idTVHotelName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="4dp"
+        android:padding="4dp"
+        android:text="Hotel Name"
+        android:textColor="@color/blue_shade_3"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_below="@id/idTVHotelName"
+        android:layout_margin="4dp"
+        android:src="@mipmap/ic_launcher"
+        android:padding="4dp"
+        android:layout_centerVertical="true"
+        android:id="@+id/idIVHotel"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hotel Address"
+        android:id="@+id/idTVHotelAddress"
+        android:textColor="@color/text_colour_1"
+        android:layout_toRightOf="@+id/idIVHotel"
+        android:layout_below="@id/idTVHotelName"
+        android:padding="3dp"
+        android:layout_margin="4dp"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:id="@+id/idTVHotelNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/idTVHotelAddress"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_toRightOf="@+id/idIVHotel"
+        android:padding="3dp"
+        android:text="Contact Number"
+        android:textColor="@color/text_colour_1"
+        android:textSize="15sp"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        android:id="@+id/idTVDescription"
+        android:textColor="@color/text_colour_1"
+        android:layout_toRightOf="@+id/idIVHotel"
+        android:layout_below="@id/idTVHotelNumber"
+        android:padding="3dp"
+        android:layout_margin="4dp"
+        android:textSize="15sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/idTVDescription"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/idBtnEdit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:text="Edit Hotel"
+            android:textAllCaps="false"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/idBtnViewMore"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:text="View More Details"
+            android:textAllCaps="false"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

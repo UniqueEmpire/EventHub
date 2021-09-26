@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="16dp"
+    android:background="@color/blue_shade_1"
+    tools:context=".ViewHotelActivity">
+
+    <TextView
+        android:id="@+id/idhotelNameTV"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textSize="30sp"
+        android:textColor="@color/blue_shade_3"
+        android:textAllCaps="true"
+        android:text="name" />
+    <TextView
+        android:id="@+id/idhotelAddressTV"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:paddingTop="10dp"
+        android:textSize="15sp"
+        android:textColor="@color/text_colour_1"
+        android:text="address" />
+
+    <TextView
+        android:id="@+id/idhotelNumberTV"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="15sp"
+        android:textColor="@color/text_colour_1"
+        android:text="number" />
+    <TextView
+        android:id="@+id/idhotelEmailTV"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="15sp"
+        android:textColor="@color/text_colour_1"
+        android:text="email" />
+    <TextView
+        android:id="@+id/idhotelDescriptionTV"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textSize="15sp"
+        android:textColor="@color/text_colour_1"
+        android:text="description" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/idBtnViewPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:text="View Price Plans"
+            android:textAllCaps="false"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/idBtnViewGallery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:text="View Galery"
+            android:textAllCaps="false"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
