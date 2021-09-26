@@ -35,7 +35,7 @@
 
 
     //zihara
-    <string name="title">Recycler view</string>
+    <string name="cattitle">Catering Services</string>
     <string name="formtitle">MY PROFILE</string>
     <string name="comname">Enter Company name</string>
     <string name="man_name">Manager\'s Name</string>
@@ -58,6 +58,13 @@
     <string name="loca">Type The Location</string>
     <string name="update">Change</string>
     <string name="week">Select Open Days</string>
+    <string name="music">Music</string>
+    <string name="calculator">Calculator</string>
+    <string name="venue">Venue</string>
+    <string name="about_us">About Us</string>
+    <string name="photography">Photography</string>
+    <string name="catering">Catering</string>
+    <string name="todo">TODO</string>
 
     <string-array name="catertype">
         <item>On-premise</item>
@@ -68,4 +75,11 @@
         <item>Delivery</item>
     </string-array>
 
+    //Abineshh
+
+    <string name="musictitle">Musical Bands</string>
+    <string name="muformtit"><![CDATA[Music & Band Details]]></string>
+    <string name="bandname">Enter Band\'s Name</string>
+    <string name="entoffmail">Enter office email</string>
+    <string name="create">create</string>
 </resources>

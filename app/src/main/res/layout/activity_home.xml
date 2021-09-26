@@ -35,7 +35,7 @@
         android:layout_marginStart="80dp"
         android:layout_marginLeft="80dp"
         android:layout_marginTop="9dp"
-        android:text="Music"
+        android:text="@string/music"
         app:layout_constraintStart_toEndOf="@+id/textView11"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
@@ -46,7 +46,7 @@
         android:layout_marginStart="83dp"
         android:layout_marginLeft="83dp"
         android:layout_marginTop="12dp"
-        android:text="Calculator"
+        android:text="@string/calculator"
         app:layout_constraintStart_toEndOf="@+id/textView12"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
@@ -57,11 +57,12 @@
         android:layout_marginStart="46dp"
         android:layout_marginLeft="46dp"
         android:layout_marginTop="68dp"
+        android:contentDescription="TODO"
         android:onClick="music"
         app:layout_constraintStart_toEndOf="@+id/imageView8"
         app:layout_constraintTop_toBottomOf="@+id/slider"
         app:srcCompat="@drawable/music"
-        tools:ignore="ImageContrastCheck" />
+        tools:ignore="ImageContrastCheck,SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -72,7 +73,8 @@
         android:layout_marginTop="52dp"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/slider"
-        app:srcCompat="@drawable/calculator" />
+        app:srcCompat="@drawable/calculator"
+        android:contentDescription="TODO" />
 
     <TextView
         android:id="@+id/textView14"
@@ -81,7 +83,7 @@
         android:layout_marginStart="60dp"
         android:layout_marginLeft="60dp"
         android:layout_marginTop="11dp"
-        android:text="Venue"
+        android:text="@string/venue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
@@ -92,7 +94,7 @@
         android:layout_marginStart="61dp"
         android:layout_marginLeft="61dp"
         android:layout_marginTop="15dp"
-        android:text="About Us"
+        android:text="@string/about_us"
         app:layout_constraintStart_toEndOf="@+id/textView15"
         app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
@@ -105,7 +107,8 @@
         android:layout_marginTop="66dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11"
-        app:srcCompat="@drawable/stage" />
+        app:srcCompat="@drawable/stage"
+        android:contentDescription="TODO" />
 
     <ImageView
         android:id="@+id/imageView6"
@@ -116,7 +119,8 @@
         android:layout_marginTop="68dp"
         app:layout_constraintStart_toEndOf="@+id/imageView5"
         app:layout_constraintTop_toBottomOf="@+id/textView12"
-        app:srcCompat="@drawable/photo" />
+        app:srcCompat="@drawable/photo"
+        android:contentDescription="TODO" />
 
     <TextView
         android:id="@+id/textView15"
@@ -125,7 +129,7 @@
         android:layout_marginStart="65dp"
         android:layout_marginLeft="65dp"
         android:layout_marginTop="27dp"
-        android:text="Photography"
+        android:text="@string/photography"
         app:layout_constraintStart_toEndOf="@+id/textView14"
         app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
@@ -138,7 +142,8 @@
         android:layout_marginTop="57dp"
         app:layout_constraintStart_toEndOf="@+id/imageView6"
         app:layout_constraintTop_toBottomOf="@+id/textView13"
-        app:srcCompat="@drawable/about" />
+        app:srcCompat="@drawable/about"
+        android:contentDescription="TODO" />
 
     <ImageView
         android:id="@+id/imageView8"
@@ -150,7 +155,9 @@
         android:onClick="catering"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/slider"
-        app:srcCompat="@drawable/restaurant" />
+        app:srcCompat="@drawable/restaurant"
+        tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck"
+        android:contentDescription="@string/todo" />
 
     <TextView
         android:id="@+id/textView11"
@@ -159,7 +166,7 @@
         android:layout_marginStart="52dp"
         android:layout_marginLeft="52dp"
         android:layout_marginTop="11dp"
-        android:text="Catering"
+        android:text="@string/catering"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView8" />
 
