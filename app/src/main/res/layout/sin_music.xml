@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/parent_layout"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/musicid"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:id="@+id/musicname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Band name"
+            android:textColor="@color/black"
+            android:singleLine="true"
+            android:textStyle="bold"
+            android:layout_below="@id/musicid"
+            android:layout_margin="3dp"
+            android:padding="4dp"
+            android:textSize="15dp"/>
+
+        
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

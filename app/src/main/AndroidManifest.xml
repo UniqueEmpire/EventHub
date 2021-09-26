@@ -10,6 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EventHub">
         <activity
+            android:name=".form"
+            android:exported="true" />
+        <activity
+            android:name=".profile2"
+            android:exported="true" />
+        <activity
+            android:name=".music_home"
+            android:exported="true" />
+        <activity
+            android:name=".music_form2"
+            android:exported="true" />
+        <activity
+            android:name=".music_form"
+            android:exported="true" />
+        <activity
             android:name=".Home"
             android:exported="true" />
         <activity
@@ -20,6 +35,9 @@
             android:exported="true" />
         <activity
             android:name=".catering"
+            android:exported="true" />
+        <activity
+            android:name=".music"
             android:exported="true" />
         <activity
             android:name=".MainActivity"

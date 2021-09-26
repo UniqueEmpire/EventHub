@@ -16,9 +16,10 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="30dp"
         android:layout_toRightOf="@id/image"
-        android:text="Canada"
+        android:text="Cake name"
+        android:textStyle="bold"
         android:textColor="#000"
-        android:textSize="17sp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/textView13"

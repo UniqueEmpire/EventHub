@@ -9,11 +9,11 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="183dp"
-        android:layout_marginRight="183dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="144dp"
+        android:layout_marginRight="144dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/addimage" />
 
     <TextView
@@ -28,7 +28,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
+        android:id="@+id/ed_des"
         android:layout_width="281dp"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
@@ -42,49 +42,30 @@
         app:layout_constraintTop_toBottomOf="@+id/time2"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
-        android:layout_marginLeft="96dp"
-        android:layout_marginTop="46dp"
-        android:background="@color/purple_500"
-
-        android:minWidth="48dp"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4"
-        app:srcCompat="@android:drawable/ic_menu_save"
-        tools:ignore="SpeakableTextPresentCheck" />
-
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="46dp"
-        android:layout_marginEnd="111dp"
-        android:layout_marginRight="111dp"
-        android:text="@string/update"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginRight="88dp"
+        android:text="Delete"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
+        app:layout_constraintTop_toBottomOf="@+id/ed_loca" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName3"
+    <Button
+        android:id="@+id/button6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
+        android:layout_marginStart="92dp"
+        android:layout_marginLeft="92dp"
+        android:layout_marginTop="20dp"
+        android:text="Update"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_loca" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName4"
+        android:id="@+id/ed_loca"
         android:layout_width="281dp"
         android:layout_height="48dp"
         android:layout_marginTop="24dp"
@@ -128,7 +109,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView14">
 
         <ToggleButton
-            android:id="@+id/toggleButton"
+            android:id="@+id/mon"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
@@ -142,7 +123,7 @@
             android:textOn="M" />
 
         <ToggleButton
-            android:id="@+id/toggleButton2"
+            android:id="@+id/tue"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -154,7 +135,7 @@
             android:textOn="T" />
 
         <ToggleButton
-            android:id="@+id/toggleButton3"
+            android:id="@+id/wed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -166,7 +147,7 @@
             android:textOn="W" />
 
         <ToggleButton
-            android:id="@+id/toggleButton4"
+            android:id="@+id/thu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -178,7 +159,7 @@
             android:textOn="T"/>
 
         <ToggleButton
-            android:id="@+id/toggleButton5"
+            android:id="@+id/fri"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -190,7 +171,7 @@
             android:textOn="F" />
 
         <ToggleButton
-            android:id="@+id/toggleButton6"
+            android:id="@+id/sat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -202,7 +183,7 @@
             android:textOn="S" />
 
         <ToggleButton
-            android:id="@+id/toggleButton7"
+            android:id="@+id/sun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
@@ -225,7 +206,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
+        app:layout_constraintTop_toBottomOf="@+id/ed_des" />
 
     <ImageView
         android:id="@+id/imageView3"
