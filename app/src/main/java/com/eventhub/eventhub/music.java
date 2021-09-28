@@ -1,8 +1,13 @@
 package com.eventhub.eventhub;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,20 +15,38 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class music extends AppCompatActivity {
+    private static final String TAG = "music";
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.music);
 
+        setContentView(R.layout.music);
         Log.d(TAG, "onCreate: started");
         initImageBitmaps();
     }
 
-    private static final String TAG = "catering";
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.music,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.item2:{
+                Intent intent = new Intent(this,music_form.class);
+                startActivity(intent);
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
     private void initImageBitmaps(){
         Log.d(TAG, "initImageBitmaps: started");
-        mImageUrls.add("https://99designs-blog.imgix.net/blog/wp-content/uploads/2019/06/attachment_70635799-e1559839116897.jpeg?auto=format&q=60&fit=max&w=930");
+        mImageUrls.add("https://firebasestorage.googleapis.com/v0/b/eventhub-b7101.appspot.com/o/0e2422cbe498308f066567536a6ece73.jpg?alt=media&token=6fcaebae-1d4e-4aa8-a939-0c24f0e7e002");
         mNames.add("Seegiriya");
         mImageUrls.add("https://99designs-blog.imgix.net/blog/wp-content/uploads/2019/06/attachment_48320126-e1560425048816.jpeg?auto=format&q=60&fit=max&w=930");
         mNames.add("Ella");

@@ -23,23 +23,14 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        ArrayList<SliderData> sliderDataArrayList = new ArrayList<>();
-        SliderView sliderView = findViewById(R.id.slider);
-        sliderDataArrayList.add(new SliderData(url1));
-        sliderDataArrayList.add(new SliderData(url2));
-        sliderDataArrayList.add(new SliderData(url3));
-        SliderAdapter adapter = new SliderAdapter(this, sliderDataArrayList);
-        sliderView.setAutoCycleDirection(SliderView.LAYOUT_DIRECTION_LTR);
-        sliderView.setSliderAdapter(adapter);
-        sliderView.setScrollTimeInSec(3);
-        sliderView.setAutoCycle(true);
-        sliderView.startAutoCycle();
+
+        MainSlider();
     }
 
     public void catering(View view){
 
         //Go to the next activity
-        Intent intent = new Intent(this,form.class);
+        Intent intent = new Intent(this,catering.class);
 
         //Start the activity 02
         startActivity(intent);
@@ -48,7 +39,7 @@ public class Home extends AppCompatActivity {
 
         //Go to the next activity
         //Intent intent2 = new Intent(this,music.class);
-        Intent intent2 = new Intent(this,music_form.class);
+        Intent intent2 = new Intent(this,music.class);
 
         //Start the activity 02
         startActivity(intent2);
@@ -87,4 +78,17 @@ public class Home extends AppCompatActivity {
         startActivity(intent6);
     }
 
+    public void MainSlider(){
+        ArrayList<SliderData> sliderDataArrayList = new ArrayList<>();
+        SliderView sliderView = findViewById(R.id.slider);
+        sliderDataArrayList.add(new SliderData(url1));
+        sliderDataArrayList.add(new SliderData(url2));
+        sliderDataArrayList.add(new SliderData(url3));
+        SliderAdapter adapter = new SliderAdapter(this, sliderDataArrayList);
+        sliderView.setAutoCycleDirection(SliderView.LAYOUT_DIRECTION_LTR);
+        sliderView.setSliderAdapter(adapter);
+        sliderView.setScrollTimeInSec(3);
+        sliderView.setAutoCycle(true);
+        sliderView.startAutoCycle();
+    }
 }
