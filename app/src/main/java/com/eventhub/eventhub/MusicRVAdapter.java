@@ -21,9 +21,9 @@ import java.util.ArrayList;
 public class MusicRVAdapter extends RecyclerView.Adapter<MusicRVAdapter.ViewHolder>{
     private ArrayList<String> mImageNames = new ArrayList<>();
     private ArrayList<String> mImage = new ArrayList<>();
-    private static final String TAG = "test.sliit.recyclerview.RecyclerViewAdapter";
+    private static final String TAG = "com.eventhub.eventhub.MusicRVAdapter";
     private Context mContext;
-    public MusicRVAdapter(ArrayList<String> image,ArrayList<String>name,Context context){
+    public MusicRVAdapter(ArrayList<String>name,ArrayList<String> image,Context context){
         this.mImage=image;
         this.mImageNames=name;
         this.mContext=context;
@@ -31,14 +31,14 @@ public class MusicRVAdapter extends RecyclerView.Adapter<MusicRVAdapter.ViewHold
     @NonNull
     @Override
 
-    public MusicRVAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sin_music,parent,false);
-        MusicRVAdapter.ViewHolder viewHolder = new MusicRVAdapter.ViewHolder(view);
+        ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
     @SuppressLint("LongLogTag")
     @Override
-    public void onBindViewHolder(@NonNull MusicRVAdapter.ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         Log.d(TAG, "onBindViewHolder: called");
         Glide.with(mContext).asBitmap().load(mImage.get(position)).into(holder.image);
         holder.name.setText(mImageNames.get(position));
@@ -53,7 +53,7 @@ public class MusicRVAdapter extends RecyclerView.Adapter<MusicRVAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return 2;
+        return mImageNames.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -65,7 +65,7 @@ public class MusicRVAdapter extends RecyclerView.Adapter<MusicRVAdapter.ViewHold
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             image= itemView.findViewById(R.id.musicid);
-            name= itemView.findViewById(R.id.musicid);
+            name= itemView.findViewById(R.id.musicname);
             parentlay=itemView.findViewById(R.id.parent_layout);
         }
     }

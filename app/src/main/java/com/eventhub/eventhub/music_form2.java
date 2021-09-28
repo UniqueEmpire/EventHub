@@ -33,23 +33,24 @@ public class music_form2 extends AppCompatActivity {
     String comname,opentime,clstime,location,des;
     private DatabaseReference databaseRef;
     private FirebaseDatabase firebaseDatabase;
-
     int time1hour, time2hour, time1min, time2min;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music_form2);
+        create = findViewById(R.id.createbtn);
 
-//        managername = getIntent().getStringExtra("manager_name");
-//        managerphn = getIntent().getStringExtra("manager_phone");
-//        officephn = getIntent().getStringExtra("office_phone");
-//        officeaddress = getIntent().getStringExtra("office_address");
-//        ofemail = getIntent().getStringExtra("office_address");
+        managername = getIntent().getStringExtra("manager_name");
+        managerphn = getIntent().getStringExtra("manager_phone");
+        officephn = getIntent().getStringExtra("office_phone");
+        officeaddress = getIntent().getStringExtra("office_address");
+        ofemail = getIntent().getStringExtra("office_email");
 
         compyname=findViewById(R.id.compname);
         offloca=findViewById(R.id.muloca);
         desc=findViewById(R.id.etmu_des);
-
+        compyname.setText(managername);
         time1=findViewById(R.id.mutime1);
         time2=findViewById(R.id.mutime2);
 
@@ -107,64 +108,68 @@ public class music_form2 extends AppCompatActivity {
             }
         });
 
-//        String ID=comname;
-//        create.setOnClickListener(new View.OnClickListener() {
-//            MusicModel musicModel = new MusicModel(managername,managerphn, officephn, officeaddress, ofemail, comname,opentime, clstime,location, des);
-//            @Override
-//            public void onClick(View v) {
-//                databaseRef.addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        databaseRef.child(ID).setValue(musicModel);
-//                        Toast.makeText(getApplicationContext(),"Your music band is added" , Toast.LENGTH_LONG).show();
-//                    }
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//                        Toast.makeText(getApplicationContext(),"Your music band is not added" , Toast.LENGTH_LONG).show();
-//                    }
-//                });
-//            }
-//        });
-//
-//
-//        databaseRef = firebaseDatabase.getReference("catering").child(ID);
-//        update.setOnClickListener(new View.OnClickListener() {
-//            MusicModel musicModel = new MusicModel(managername,managerphn, officephn, officeaddress, ofemail, comname,opentime, clstime,location, des);
-//            @Override
-//            public void onClick(View v) {
-//                HashMap<String,Object> map = new HashMap<>();
-//                map.put("comname",comname);
-//                map.put("managername",managername);
-//                map.put("managerphn",managerphn);
-//                map.put("officephn",officephn);
-//                map.put("officeaddress",officeaddress);
-//                map.put("ofemail",ofemail);
-//                map.put("opentime",opentime);
-//                map.put("clstime",clstime);
-//                map.put("des",des);
-//                map.put("location",location);
-//                databaseRef.addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        databaseRef.updateChildren(map);
-//                        Toast.makeText(getApplicationContext(),"Your Music Band is updated" , Toast.LENGTH_LONG).show();
-//                    }
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//                        Toast.makeText(getApplicationContext(),"Your music band is not updated" , Toast.LENGTH_LONG).show();
-//                    }
-//                });
-//            }
-//        });
-//
-//        delete.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                databaseRef.removeValue();
-//                Toast.makeText(getApplicationContext(),"Your music band is deleted" , Toast.LENGTH_LONG).show();
-//                startActivity(new Intent(music_form2.this,Home.class));
-//            }
-//        });
+/*        String ID=comname;
+        create.setOnClickListener(new View.OnClickListener() {
+            MusicModel musicModel = new MusicModel(managername,managerphn, officephn, officeaddress, ofemail, comname,opentime, clstime,location, des);
+            @Override
+            public void onClick(View v) {
+                databaseRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        databaseRef.child(ID).setValue(musicModel);
+                        Toast.makeText(getApplicationContext(),"Your music band is added" , Toast.LENGTH_LONG).show();
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(getApplicationContext(),"Your music band is not added" , Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        });*/
+
+/*        databaseRef = firebaseDatabase.getReference("catering").child(ID);
+        update.setOnClickListener(new View.OnClickListener() {
+            MusicModel musicModel = new MusicModel(managername,managerphn, officephn, officeaddress, ofemail, comname,opentime, clstime,location, des);
+            @Override
+            public void onClick(View v) {
+                HashMap<String,Object> map = new HashMap<>();
+                map.put("comname",comname);
+                map.put("managername",managername);
+                map.put("managerphn",managerphn);
+                map.put("officephn",officephn);
+                map.put("officeaddress",officeaddress);
+                map.put("ofemail",ofemail);
+                map.put("opentime",opentime);
+                map.put("clstime",clstime);
+                map.put("des",des);
+                map.put("location",location);
+                databaseRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        databaseRef.updateChildren(map);
+                        Toast.makeText(getApplicationContext(),"Your Music Band is updated" , Toast.LENGTH_LONG).show();
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(getApplicationContext(),"Your music band is not updated" , Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        });*/
+
+/*        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                databaseRef.removeValue();
+                Toast.makeText(getApplicationContext(),"Your music band is deleted" , Toast.LENGTH_LONG).show();
+                startActivity(new Intent(music_form2.this,Home.class));
+            }
+        });*/
 
     }
+    public void submit (View view){
+        String msg=" "+managername+" "+managerphn+" "+officephn+" "+officeaddress+" "+ofemail+" ";
+        Toast.makeText(getApplicationContext(), "Hii"+msg, Toast.LENGTH_LONG).show();
+    }
 }
+
