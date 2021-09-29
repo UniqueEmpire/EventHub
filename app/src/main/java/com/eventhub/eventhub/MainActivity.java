@@ -57,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
 
         //Start the activity 02
         startActivity(intent);
+        finish();
+
     }
     public void login(View view){
 
@@ -65,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Start the activity 02
         startActivity(intent2);
+        finish();
     }
     public void skip(View view){
 
@@ -73,5 +76,6 @@ public class MainActivity extends AppCompatActivity {
 
         //Start the activity 02
         startActivity(intent3);
+        finish();
     }
 }

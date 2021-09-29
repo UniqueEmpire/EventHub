@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.android.libraries.places.api.Places;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,10 +28,11 @@ import java.util.HashMap;
 public class music_form2 extends AppCompatActivity {
 
     TextView time1,time2,offloca;
+    int PLACE_PICKER_REQUEST = 1;
     EditText compyname,desc;
     Button create,update,delete;
     String managername,managerphn,officephn,officeaddress,ofemail;
-    String comname,opentime,clstime,location,des;
+
     private DatabaseReference databaseRef;
     private FirebaseDatabase firebaseDatabase;
     int time1hour, time2hour, time1min, time2min;
@@ -108,24 +110,7 @@ public class music_form2 extends AppCompatActivity {
             }
         });
 
-/*        String ID=comname;
-        create.setOnClickListener(new View.OnClickListener() {
-            MusicModel musicModel = new MusicModel(managername,managerphn, officephn, officeaddress, ofemail, comname,opentime, clstime,location, des);
-            @Override
-            public void onClick(View v) {
-                databaseRef.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        databaseRef.child(ID).setValue(musicModel);
-                        Toast.makeText(getApplicationContext(),"Your music band is added" , Toast.LENGTH_LONG).show();
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(getApplicationContext(),"Your music band is not added" , Toast.LENGTH_LONG).show();
-                    }
-                });
-            }
-        });*/
+
 
 /*        databaseRef = firebaseDatabase.getReference("catering").child(ID);
         update.setOnClickListener(new View.OnClickListener() {
@@ -168,8 +153,33 @@ public class music_form2 extends AppCompatActivity {
 
     }
     public void submit (View view){
-        String msg=" "+managername+" "+managerphn+" "+officephn+" "+officeaddress+" "+ofemail+" ";
+        String bandname = compyname.getText().toString();
+        //String opentime,,,;
+        String opentime = time1.getText().toString();
+        String clstime = time2.getText().toString();
+        String location = offloca.getText().toString();
+        String des = desc.getText().toString();
+        String msg=" "+managername+"\n"+managerphn+"\n"+officephn+"\n"+officeaddress+"\n"+ofemail+"\n"+bandname+"\n"+opentime+"\n"+clstime+"\n"+location+"\n"+des;
         Toast.makeText(getApplicationContext(), "Hii"+msg, Toast.LENGTH_LONG).show();
+
+        /*String ID=bandname;
+        create.setOnClickListener(new View.OnClickListener() {
+            MusicModel musicModel = new MusicModel(managername,managerphn, officephn, officeaddress, ofemail, bandname,opentime, clstime,location, des);
+            @Override
+            public void onClick(View v) {
+                databaseRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        databaseRef.child(ID).setValue(musicModel);
+                        Toast.makeText(getApplicationContext(),"Your music band is added" , Toast.LENGTH_LONG).show();
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(getApplicationContext(),"Your music band is not added" , Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        });*/
     }
 }
 
