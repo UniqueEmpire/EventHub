@@ -77,14 +77,13 @@ dependencies {
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.gms:google-services:4.3.3'
-    implementation 'com.android.support:multidex:1.0.3'
+    //implementation 'com.google.android.gms:play-services:12.0.1'
     def multidex_version = "2.0.1"
     implementation "androidx.multidex:multidex:$multidex_version"
 
     implementation 'com.android.support:multidex:1.0.3' //enter the latest version
-    android {
-        defaultConfig {
-            multiDexEnabled true
-        }
-    }
+
+    //Places
+    implementation 'com.google.android.libraries.places:places:1.0.0'
+
 }
