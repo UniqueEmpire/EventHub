@@ -15,10 +15,11 @@ public class MusicModel implements Parcelable {
     private String clstime;
     private String location;
     private String des;
+    private String logourl;
 
     public MusicModel() { }
 
-    public MusicModel(String manname, String manphnnum, String offlandnum, String offadd, String emailadd, String comname, String opentime, String clstime, String location, String des) {
+    public MusicModel(String manname, String manphnnum, String offlandnum, String offadd, String emailadd, String comname, String opentime, String clstime, String location, String des, String logourl) {
         this.manname = manname;
         this.manphnnum = manphnnum;
         this.offlandnum = offlandnum;
@@ -29,6 +30,7 @@ public class MusicModel implements Parcelable {
         this.clstime = clstime;
         this.location = location;
         this.des = des;
+        this.logourl = logourl;
     }
 
     protected MusicModel(Parcel in) {
@@ -42,6 +44,7 @@ public class MusicModel implements Parcelable {
         clstime = in.readString();
         location = in.readString();
         des = in.readString();
+        logourl = in.readString();
     }
 
     public static final Creator<MusicModel> CREATOR = new Creator<MusicModel>() {
@@ -136,6 +139,10 @@ public class MusicModel implements Parcelable {
         this.des = des;
     }
 
+    public String getLogourl() { return logourl; }
+
+    public void setLogourl(String logourl) { this.logourl = logourl; }
+
     @Override
     public int describeContents() {
         return 0;
@@ -153,5 +160,6 @@ public class MusicModel implements Parcelable {
         dest.writeString(clstime);
         dest.writeString(location);
         dest.writeString(des);
+        dest.writeString(logourl);
     }
 }

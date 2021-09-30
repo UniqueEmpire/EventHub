@@ -1,24 +1,38 @@
 package com.eventhub.eventhub;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.libraries.places.api.Places;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -28,20 +42,29 @@ import java.util.HashMap;
 public class music_form2 extends AppCompatActivity {
 
     TextView time1,time2,offloca;
+    ImageView imgselect,imgview;
     int PLACE_PICKER_REQUEST = 1;
     EditText compyname,desc;
     Button create,update,delete;
-    String managername,managerphn,officephn,officeaddress,ofemail;
-
-    private DatabaseReference databaseRef;
-    private FirebaseDatabase firebaseDatabase;
+    String managername,managerphn,officephn,officeaddress,ofemail,dwnloadurl;
     int time1hour, time2hour, time1min, time2min;
+    public Uri imguri;
+
+    FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseRef;
+    private StorageReference mStoreageRef;
+    ProgressDialog progressDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music_form2);
+        progressDialog=new ProgressDialog(this);
         create = findViewById(R.id.createbtn);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseRef = firebaseDatabase.getReference("bands");
+        mStoreageRef = FirebaseStorage.getInstance().getReference("bandlogos");
 
         managername = getIntent().getStringExtra("manager_name");
         managerphn = getIntent().getStringExtra("manager_phone");
@@ -52,9 +75,12 @@ public class music_form2 extends AppCompatActivity {
         compyname=findViewById(R.id.compname);
         offloca=findViewById(R.id.muloca);
         desc=findViewById(R.id.etmu_des);
-        compyname.setText(managername);
+        //compyname.setText(managername);
         time1=findViewById(R.id.mutime1);
         time2=findViewById(R.id.mutime2);
+
+        imgselect = findViewById(R.id.chooseimg);
+        imgview = findViewById(R.id.imgView);
 
         time1.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -76,7 +102,7 @@ public class music_form2 extends AppCompatActivity {
                             }
                         }
                 },12,0,false);
-                timePickerDialog.updateTime(time2hour,time2min);
+                timePickerDialog.updateTime(time1hour,time1min);
 
                 timePickerDialog.show();
             }
@@ -110,6 +136,12 @@ public class music_form2 extends AppCompatActivity {
             }
         });
 
+        imgselect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                filechooser();
+            }
+        });
 
 
 /*        databaseRef = firebaseDatabase.getReference("catering").child(ID);
@@ -150,36 +182,93 @@ public class music_form2 extends AppCompatActivity {
                 startActivity(new Intent(music_form2.this,Home.class));
             }
         });*/
-
     }
-    public void submit (View view){
+
+    private void filechooser(){
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent,1);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==1 && resultCode==RESULT_OK && data!=null && data.getData()!=null){
+            imguri=data.getData();
+            imgview.setImageURI(imguri);
+        }
+    }
+
+    private String getFileExtension(Uri uri){
+        ContentResolver cR = getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+        return mime.getExtensionFromMimeType(cR.getType(uri));
+    }
+
+    public void uploadFile(View view){
+        if (imguri!=null){
+            progressDialog.show();
+            StorageReference fileReference = mStoreageRef.child(System.currentTimeMillis()+"."+getFileExtension(imguri));
+            fileReference.putFile(imguri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            progressDialog.dismiss();
+                            Toast.makeText(music_form2.this,"Upload successful",Toast.LENGTH_LONG).show();
+                            fileReference.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Uri> task) {
+                                    dwnloadurl = task.getResult().toString();
+                                    submit();
+                                }
+                            });
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            progressDialog.dismiss();
+                            Toast.makeText(music_form2.this,e.getMessage(),Toast.LENGTH_LONG).show();
+                        }
+                    }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+                            double pr = (100.0 * snapshot.getBytesTransferred()/snapshot.getTotalByteCount());
+                            progressDialog.setMessage("Uploading "+(int)pr+"%");
+                        }
+                    });
+        }
+        else{
+            Toast.makeText(this,"No file selected",Toast.LENGTH_LONG).show();
+        }
+    }
+    public void submit (){
         String bandname = compyname.getText().toString();
-        //String opentime,,,;
         String opentime = time1.getText().toString();
         String clstime = time2.getText().toString();
-        String location = offloca.getText().toString();
+        //String location = offloca.getText().toString();
         String des = desc.getText().toString();
-        String msg=" "+managername+"\n"+managerphn+"\n"+officephn+"\n"+officeaddress+"\n"+ofemail+"\n"+bandname+"\n"+opentime+"\n"+clstime+"\n"+location+"\n"+des;
-        Toast.makeText(getApplicationContext(), "Hii"+msg, Toast.LENGTH_LONG).show();
+        String location="Colombo";
+        //desc.setText(dwnloadurl);
+        String logourl =dwnloadurl;
+        String ID=databaseRef.push().getKey();
+        String msg=" "+managername+"\n"+managerphn+"\n"+officephn+"\n"+officeaddress+"\n"+ofemail+"\n"+bandname+"\n"+opentime+"\n"+clstime+"\n"+location+"\n"+des+"\n"+logourl;
+        //Toast.makeText(getApplicationContext(), "Hii"+msg, Toast.LENGTH_LONG).show();
+        MusicModel musicModel = new MusicModel(managername,managerphn, officephn, officeaddress, ofemail, bandname,opentime, clstime,location, des, logourl);
 
-        /*String ID=bandname;
-        create.setOnClickListener(new View.OnClickListener() {
-            MusicModel musicModel = new MusicModel(managername,managerphn, officephn, officeaddress, ofemail, bandname,opentime, clstime,location, des);
+        databaseRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                databaseRef.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        databaseRef.child(ID).setValue(musicModel);
-                        Toast.makeText(getApplicationContext(),"Your music band is added" , Toast.LENGTH_LONG).show();
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(getApplicationContext(),"Your music band is not added" , Toast.LENGTH_LONG).show();
-                    }
-                });
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                databaseRef.child(ID).setValue(musicModel);
+                Toast.makeText(getApplicationContext(),"Your music band is added" , Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(music_form2.this,music.class);
+                startActivity(intent);
             }
-        });*/
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(),"Your music band is not added" , Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }
 
