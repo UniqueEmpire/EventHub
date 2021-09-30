@@ -34,7 +34,7 @@ public class music_form extends AppCompatActivity {
         String officeaddress = offadd.getText().toString();
         String ofemail = offemail.getText().toString();
 
-       /* if((!isPhnValid(officephn))||(!isPhnValid(managerphn))||(!isAddValid(officeaddress))||(!isEmailValid(ofemail))){
+        /*if((!isPhnValid(officephn))||(!isPhnValid(managerphn))||(!isAddValid(officeaddress))||(!isEmailValid(ofemail))){
             if(!isPhnValid(managerphn)){
                 Toast.makeText(getApplicationContext(),"Manager's phone number length is invalid" , Toast.LENGTH_LONG).show();
             }
@@ -77,8 +77,6 @@ public class music_form extends AppCompatActivity {
         }
     }
 
-
-
     public boolean isDesValid(String c) {
         if (c.length() == 100) {
             return true;
@@ -114,9 +112,4 @@ public class music_form extends AppCompatActivity {
             return matcher.matches();
         }
     }
-//    static boolean isValid(String email) {
-//        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
-//        return email.matches(regex);
-//    }
-
 }

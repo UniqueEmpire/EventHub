@@ -34,7 +34,7 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/chooseimg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="149dp"
@@ -115,7 +115,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="39dp"
         android:background="@drawable/rounded_corner"
-        android:onClick="submit"
+        android:onClick="uploadFile"
         android:text="create"
         app:backgroundTint="@color/butn"
         app:layout_constraintEnd_toEndOf="parent"
