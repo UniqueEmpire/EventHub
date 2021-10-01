@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -15,33 +17,87 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.eventhub.eventhub.databinding.MusicBinding;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class MusicRVAdapter extends RecyclerView.Adapter<MusicRVAdapter.ViewHolder>{
-    private ArrayList<String> mImageNames = new ArrayList<>();
-    private ArrayList<String> mImage = new ArrayList<>();
-    private static final String TAG = "com.eventhub.eventhub.MusicRVAdapter";
+    private ArrayList<MusicModel> musicarrayList;
     private Context mContext;
-    public MusicRVAdapter(ArrayList<String>name,ArrayList<String> image,Context context){
-        this.mImage=image;
-        this.mImageNames=name;
-        this.mContext=context;
+    int lastPos = -1;
+    private MusicClickInterface musicClickInterface;
+    private static final String TAG = "com.eventhub.eventhub.MusicRVAdapter";
+
+    public MusicRVAdapter(ArrayList<MusicModel> musicarrayList, Context mContext, MusicClickInterface musicClickInterface) {
+        this.musicarrayList = musicarrayList;
+        this.mContext = mContext;
+        this.musicClickInterface = musicClickInterface;
     }
+
     @NonNull
     @Override
+    public MusicRVAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sin_music2,parent,false);
+        return new ViewHolder(view);
+    }
 
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sin_music,parent,false);
-        ViewHolder viewHolder = new ViewHolder(view);
-        return viewHolder;
+    @Override
+    public void onBindViewHolder(@NonNull MusicRVAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        MusicModel musicModl = musicarrayList.get(position);
+        holder.name.setText(musicModl.getComname());
+        Picasso.get().load(musicModl.getLogourl()).into(holder.image);
+        holder.image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                musicClickInterface.onMusicClick(position);
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return 0;
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder{
+        private  ImageView image;
+        private TextView name;
+        //RelativeLayout parentlay;
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            image= itemView.findViewById(R.id.musicid);
+            name= itemView.findViewById(R.id.musicname);
+            //parentlay=itemView.findViewById(R.id.parent_layout);
+        }
+    }
+    private void setAnimation(View itemView,int position){
+        if(position>lastPos){
+            Animation animation = AnimationUtils.loadAnimation(mContext, android.R.anim.slide_in_left);
+            itemView.setAnimation(animation);
+            lastPos = position;
+        }
+
+    }
+    public interface MusicClickInterface{
+        void onMusicClick(int position);
+    }
+}
+
+/*@NonNull
+    @Override
+
+    public MusicRVAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
     }
     @SuppressLint("LongLogTag")
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
+    public void onBindViewHolder(@NonNull MusicRVAdapter.ViewHolder holder,  int position) {
+
+
         Log.d(TAG, "onBindViewHolder: called");
         Glide.with(mContext).asBitmap().load(mImage.get(position)).into(holder.image);
-        holder.name.setText(mImageNames.get(position));
+        holder.name.setText(musicModl.getComname() );
         holder.parentlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,13 +109,13 @@ public class MusicRVAdapter extends RecyclerView.Adapter<MusicRVAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return mImageNames.size();
+        return arrayList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder {
 
-        ImageView image;
-        TextView name;
+        private  ImageView image;
+        private TextView name;
         RelativeLayout parentlay;
 
         public ViewHolder(@NonNull View itemView) {
@@ -69,4 +125,4 @@ public class MusicRVAdapter extends RecyclerView.Adapter<MusicRVAdapter.ViewHold
             parentlay=itemView.findViewById(R.id.parent_layout);
         }
     }
-}
+    */

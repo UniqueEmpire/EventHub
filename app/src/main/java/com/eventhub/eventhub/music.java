@@ -3,25 +3,92 @@ package com.eventhub.eventhub;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
-public class music extends AppCompatActivity {
-    private static final String TAG = "music";
+public class music extends AppCompatActivity implements MusicRVAdapter.MusicClickInterface {
+    private DatabaseReference databaseReference;
+    private ArrayList <MusicModel> musicModelarrlist;
+    private RelativeLayout bottomsheet;
+    private MusicRVAdapter musicRVAdapter;
+
+    //private static final String TAG = "music";
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.music);
+        RecyclerView recyclerView = findViewById(R.id.murecycler_view);
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference("bands");
+        musicModelarrlist = new ArrayList<>();
+//        //RelativeLayout relativeLayout = findViewById(R.id.idRLHomeMusic);
+        musicRVAdapter = new MusicRVAdapter(musicModelarrlist,this,this);
+        bottomsheet = findViewById(R.id.bottomSheet);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(musicRVAdapter);
 
+        getAllbands();
+
+        /*Log.d(TAG, "initRecyclerView: started");
+
+
+        MusicRVAdapter adapter = new  MusicRVAdapter(mNames,mImageUrls,this);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         setContentView(R.layout.music);
         Log.d(TAG, "onCreate: started");
-        initImageBitmaps();
+        initImageBitmaps();*/
+    }
+
+    private void getAllbands() {
+        musicModelarrlist.clear();
+        databaseReference.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                musicModelarrlist.add(snapshot.getValue(MusicModel.class));
+                musicRVAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                musicRVAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                musicRVAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                musicRVAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) { }
+        });
     }
 
     @Override
@@ -41,8 +108,28 @@ public class music extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+    @Override
+    public void onMusicClick(int position) {
+        displayBottemSheet(musicModelarrlist.get(position));
+    }
+    private void displayBottemSheet(MusicModel musicModel){
+        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
+        View layout = LayoutInflater.from(this).inflate(R.layout.music_bottom_sheet,bottomsheet);
+        bottomSheetDialog.setContentView(layout);
+        bottomSheetDialog.setCancelable(false);
+        bottomSheetDialog.setCanceledOnTouchOutside(true);
+        bottomSheetDialog.show();
 
-    private ArrayList<String> mNames = new ArrayList<>();
+        TextView band = layout.findViewById(R.id.idbandname);
+        TextView des = layout.findViewById(R.id.idbandDes);
+        ImageView img = layout.findViewById(R.id.bandlogo);
+
+        band.setText(musicModel.getComname());
+        des.setText(musicModel.getDes());
+        Picasso.get().load(musicModel.getLogourl()).into(img);
+    }
+
+    /*private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
     private void initImageBitmaps(){
         Log.d(TAG, "initImageBitmaps: started");
@@ -66,13 +153,8 @@ public class music extends AppCompatActivity {
         mNames.add("Colombo");
         mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Jaffna.jpg");
         mNames.add("Jaffna");
-        initRecyclerView();
-    }
-    private void initRecyclerView(){
-        Log.d(TAG, "initRecyclerView: started");
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        MusicRVAdapter adapter = new  MusicRVAdapter(mNames,mImageUrls,this);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-    }
+
+    }*/
+
+
 }
