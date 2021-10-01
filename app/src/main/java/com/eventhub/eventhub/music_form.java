@@ -61,21 +61,7 @@ public class music_form extends AppCompatActivity {
             startActivity(intent);
 //        }
     }
-    /*public boolean isDescriptionValid(String chars) {
-        if (chars.length() == 200) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean isAddress(String chars) {
-        if (chars.length() <= 200) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+    /*
 
     public boolean isDesValid(String c) {
         if (c.length() == 100) {
