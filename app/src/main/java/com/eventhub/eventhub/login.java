@@ -28,8 +28,8 @@ public class login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        email=findViewById(R.id.et_email);
-        pwd=findViewById(R.id.et_pwd);
+        email=findViewById(R.id.edit_Email);
+        pwd=findViewById(R.id.edit_password);
         btn=findViewById(R.id.btn_login);
         mAuth = FirebaseAuth.getInstance();
 
@@ -64,7 +64,7 @@ public class login extends AppCompatActivity {
         });
     }
 
-    @Override
+ /*   @Override
      protected void onStart(){
         super.onStart();
         FirebaseUser user = mAuth.getCurrentUser();
@@ -73,7 +73,7 @@ public class login extends AppCompatActivity {
             startActivity(i);
             this.finish();
         }
-    }
+    }*/
 
     public void signup(View view){
 

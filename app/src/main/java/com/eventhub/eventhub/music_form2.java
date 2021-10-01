@@ -54,6 +54,7 @@ public class music_form2 extends AppCompatActivity {
     private DatabaseReference databaseRef;
     private StorageReference mStoreageRef;
     ProgressDialog progressDialog;
+    int flag=0;
 
 
     @Override
@@ -207,7 +208,7 @@ public class music_form2 extends AppCompatActivity {
     }
 
     public void uploadFile(View view){
-        if (imguri!=null){
+        if (imguri!=null&&flag==0){
             progressDialog.show();
             StorageReference fileReference = mStoreageRef.child(System.currentTimeMillis()+"."+getFileExtension(imguri));
             fileReference.putFile(imguri)
@@ -220,6 +221,7 @@ public class music_form2 extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Uri> task) {
                                     dwnloadurl = task.getResult().toString();
+                                    flag=1;
                                     submit();
                                 }
                             });
@@ -238,6 +240,9 @@ public class music_form2 extends AppCompatActivity {
                         }
                     });
         }
+        else if(imguri!=null&&flag==1){
+            submit();
+        }
         else{
             Toast.makeText(this,"No file selected",Toast.LENGTH_LONG).show();
         }
@@ -252,23 +257,29 @@ public class music_form2 extends AppCompatActivity {
         //desc.setText(dwnloadurl);
         String logourl =dwnloadurl;
         String ID=databaseRef.push().getKey();
-        String msg=" "+managername+"\n"+managerphn+"\n"+officephn+"\n"+officeaddress+"\n"+ofemail+"\n"+bandname+"\n"+opentime+"\n"+clstime+"\n"+location+"\n"+des+"\n"+logourl;
-        //Toast.makeText(getApplicationContext(), "Hii"+msg, Toast.LENGTH_LONG).show();
-        MusicModel musicModel = new MusicModel(managername,managerphn, officephn, officeaddress, ofemail, bandname,opentime, clstime,location, des, logourl);
+        if(bandname.isEmpty() || opentime.isEmpty()||clstime.isEmpty()||des.isEmpty()){
+            Toast.makeText(getApplicationContext(), "Please fill all the fields !", Toast.LENGTH_LONG).show();
+        }
+        else {
+            String msg = " " + managername + "\n" + managerphn + "\n" + officephn + "\n" + officeaddress + "\n" + ofemail + "\n" + bandname + "\n" + opentime + "\n" + clstime + "\n" + location + "\n" + des + "\n" + logourl;
+            //Toast.makeText(getApplicationContext(), "Hii"+msg, Toast.LENGTH_LONG).show();
+            MusicModel musicModel = new MusicModel(managername, managerphn, officephn, officeaddress, ofemail, bandname, opentime, clstime, location, des, logourl);
 
-        databaseRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                databaseRef.child(ID).setValue(musicModel);
-                Toast.makeText(getApplicationContext(),"Your music band is added" , Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(music_form2.this,music.class);
-                startActivity(intent);
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(),"Your music band is not added" , Toast.LENGTH_LONG).show();
-            }
-        });
+            databaseRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    databaseRef.child(ID).setValue(musicModel);
+                    Toast.makeText(getApplicationContext(), "Your music band is added", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(music_form2.this, music.class);
+                    startActivity(intent);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(getApplicationContext(), "Your music band is not added", Toast.LENGTH_LONG).show();
+                }
+            });
+        }
     }
 }
 
