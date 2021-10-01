@@ -67,10 +67,12 @@
     <string name="todo">TODO</string>
 
     <string-array name="catertype">
+        <item>Select the catering type</item>
         <item>On-premise</item>
         <item>Off-premise</item>
     </string-array>
     <string-array name="delivertype">
+        <item>Select the delivery type</item>
         <item>Pick Up</item>
         <item>Delivery</item>
     </string-array>
