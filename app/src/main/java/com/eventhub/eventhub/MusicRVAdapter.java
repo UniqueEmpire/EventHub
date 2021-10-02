@@ -47,6 +47,7 @@ public class MusicRVAdapter extends RecyclerView.Adapter<MusicRVAdapter.ViewHold
         MusicModel musicModl = musicarrayList.get(position);
         holder.name.setText(musicModl.getComname());
         Picasso.get().load(musicModl.getLogourl()).into(holder.image);
+        setAnimation(holder.itemView,position);
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,7 +58,7 @@ public class MusicRVAdapter extends RecyclerView.Adapter<MusicRVAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return 0;
+        return musicarrayList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -77,52 +78,8 @@ public class MusicRVAdapter extends RecyclerView.Adapter<MusicRVAdapter.ViewHold
             itemView.setAnimation(animation);
             lastPos = position;
         }
-
     }
     public interface MusicClickInterface{
         void onMusicClick(int position);
     }
 }
-
-/*@NonNull
-    @Override
-
-    public MusicRVAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-    }
-    @SuppressLint("LongLogTag")
-    @Override
-    public void onBindViewHolder(@NonNull MusicRVAdapter.ViewHolder holder,  int position) {
-
-
-        Log.d(TAG, "onBindViewHolder: called");
-        Glide.with(mContext).asBitmap().load(mImage.get(position)).into(holder.image);
-        holder.name.setText(musicModl.getComname() );
-        holder.parentlay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d(TAG, "onClick: clicked on"+mImageNames.get(position));
-                Toast.makeText(mContext,mImageNames.get(position),Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    @Override
-    public int getItemCount() {
-        return arrayList.size();
-    }
-
-    public class ViewHolder {
-
-        private  ImageView image;
-        private TextView name;
-        RelativeLayout parentlay;
-
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            image= itemView.findViewById(R.id.musicid);
-            name= itemView.findViewById(R.id.musicname);
-            parentlay=itemView.findViewById(R.id.parent_layout);
-        }
-    }
-    */

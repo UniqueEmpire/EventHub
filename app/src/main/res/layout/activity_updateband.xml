@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".updateband"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="30dp"
+            android:paddingBottom="30dp">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="Update the details"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.497"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/up_managename"
+                    android:layout_width="281dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="50dp"
+                    android:ems="10"
+                    android:hint="@string/manname"
+                    android:inputType="textPersonName"
+                    android:minHeight="48dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.507"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+                <EditText
+                    android:id="@+id/up_phnnum"
+                    android:layout_width="281dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="40dp"
+                    android:ems="10"
+                    android:hint="@string/mannum"
+                    android:inputType="phone"
+                    android:minHeight="48dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/up_managename" />
+
+                <EditText
+                    android:id="@+id/up_ofnum"
+                    android:layout_width="291dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="40dp"
+                    android:ems="10"
+                    android:hint="@string/landnum"
+                    android:inputType="phone"
+                    android:minHeight="48dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.541"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/up_phnnum" />
+
+                <EditText
+                    android:id="@+id/up_address"
+                    android:layout_width="290dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="50dp"
+                    android:ems="10"
+                    android:hint="@string/offaddress"
+                    android:inputType="textPostalAddress"
+                    android:minHeight="48dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.537"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/up_ofnum" />
+
+                <EditText
+                    android:id="@+id/up_muemail"
+                    android:layout_width="290dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="40dp"
+                    android:ems="10"
+                    android:hint="@string/entoffmail"
+                    android:inputType="textEmailAddress"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.537"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/up_address" />
+
+                <ImageView
+                    android:id="@+id/up_imgView"
+                    android:layout_width="119dp"
+                    android:layout_height="111dp"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginLeft="28dp"
+                    android:layout_marginTop="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/up_muemail" />
+
+                <ImageView
+                    android:id="@+id/chooseimg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="36dp"
+                    android:layout_marginLeft="36dp"
+                    android:layout_marginTop="24dp"
+                    app:layout_constraintStart_toEndOf="@+id/up_imgView"
+                    app:layout_constraintTop_toBottomOf="@+id/up_compname"
+                    app:srcCompat="@drawable/addimage" />
+
+                <EditText
+                    android:id="@+id/up_compname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:ems="10"
+                    android:hint="@string/bandname"
+                    android:inputType="textPersonName"
+                    android:minHeight="48dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/up_imgView"
+                    tools:ignore="TextContrastCheck" />
+
+                <TextView
+                    android:id="@+id/up_mutime1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/time01"
+                    android:textSize="22sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.493"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/chooseimg" />
+
+                <TextView
+                    android:id="@+id/up_mutime2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/time2"
+                    android:textSize="22sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/up_mutime1" />
+
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="36dp"
+                    android:layout_marginLeft="36dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginRight="24dp"
+                    android:text="@string/location"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/up_muloca"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/up_muloca" />
+
+                <TextView
+                    android:id="@+id/up_muloca"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginEnd="124dp"
+                    android:layout_marginRight="124dp"
+                    android:text="@string/loca"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/up_mutime2" />
+                <EditText
+                    android:id="@+id/up_mudes"
+                    android:layout_width="281dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="45dp"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:hint="@string/descrptn"
+                    android:inputType="textMultiLine"
+                    android:minHeight="48dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.538"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/up_muloca"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <Button
+                    android:id="@+id/updatebtn"
+                    android:layout_width="121dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
+                    android:background="@drawable/rounded_corner"
+                    android:text="update"
+                    app:backgroundTint="@color/butn"
+                    app:layout_constraintEnd_toStartOf="@+id/deletebtn"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/up_mudes" />
+
+                <Button
+                    android:id="@+id/deletebtn"
+                    android:layout_width="121dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/rounded_corner"
+                    android:text="delete"
+                    app:backgroundTint="@color/butn"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/updatebtn"
+                    app:layout_constraintTop_toBottomOf="@+id/up_mudes" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
