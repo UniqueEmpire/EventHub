@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
-    android:id="@+id/bottomSheet">
+    android:background="@drawable/curved"
+    android:id="@+id/bottomSheet"
+    android:padding="10dp"
+    >
+<!--    app:cardCornerRadius="4dp">-->
 
     <TextView
         android:id="@+id/idbandname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="35dp"
+        android:layout_toRightOf="@id/bandlogo"
         android:text="Band Name"
         android:textColor="@color/black"
         android:textSize="15dp"
@@ -22,7 +30,7 @@
         android:layout_centerVertical="true"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="-40dp"
         android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginBottom="4dp"
@@ -34,10 +42,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/idbandname"
+        android:layout_marginStart="6dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="35dp"
+        android:layout_toEndOf="@id/bandlogo"
         android:layout_toRightOf="@id/bandlogo"
         android:text="Description"
         android:textColor="@color/black"
-        android:textSize="15dp" />
+        android:textSize="15sp" />
 
     <LinearLayout
         android:id="@+id/idBtnEdit"
