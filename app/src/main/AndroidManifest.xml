@@ -14,6 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EventHub">
         <activity
+            android:name=".caterupdate"
+            android:exported="true" />
+        <activity
+            android:name=".onecater"
+            android:exported="true" />
+        <activity
             android:name=".updateband"
             android:exported="true" />
 
