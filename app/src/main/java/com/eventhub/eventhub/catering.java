@@ -6,19 +6,72 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
-public class catering extends AppCompatActivity {
+public class catering extends AppCompatActivity implements RecyclerViewAdapter.CaterClickInterface{
+    private DatabaseReference databaseReference;
+    private ArrayList <modelcatering> caterModelarrlist;
+    private RecyclerViewAdapter recyclerViewAdapter;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.catering);
-        Log.d(TAG, "onCreate: started");
-        initImageBitmaps();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference("catering");
+        caterModelarrlist = new ArrayList<>();
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+
+        recyclerViewAdapter = new RecyclerViewAdapter(caterModelarrlist,this,this);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(recyclerViewAdapter);
+
+        getAllcaters();
+
+    }
+
+    private void getAllcaters(){
+        caterModelarrlist.clear();
+
+        databaseReference.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                caterModelarrlist.add(snapshot.getValue(modelcatering.class));
+                recyclerViewAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                recyclerViewAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                recyclerViewAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                recyclerViewAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) { }
+        });
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -29,61 +82,23 @@ public class catering extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.item2:{
-                Intent intent = new Intent(this,profile.class);
-                startActivity(intent);
-            }
+        if (item.getItemId() == R.id.item2) {
+            Intent intent = new Intent(this, form.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private static final String TAG = "catering";
-    private ArrayList<String> mNames = new ArrayList<>();
-    private ArrayList<String> mImageUrls = new ArrayList<>();
-    private void initImageBitmaps(){
-        Log.d(TAG, "initImageBitmaps: started");
-        mImageUrls.add("https://99designs-blog.imgix.net/blog/wp-content/uploads/2019/06/attachment_70635799-e1559839116897.jpeg?auto=format&q=60&fit=max&w=930");
-        mNames.add("Southern Jubilee");
-        mImageUrls.add("https://99designs-blog.imgix.net/blog/wp-content/uploads/2019/06/attachment_61118743-e1560425183155.png?auto=format&q=60&fit=max&w=930");
-        mNames.add("Bake Shop");
-        mImageUrls.add("https://99designs-blog.imgix.net/blog/wp-content/uploads/2019/06/attachment_48320126-e1560425048816.jpeg?auto=format&q=60&fit=max&w=930");
-        mNames.add("Sweets by millie");
-        mImageUrls.add("https://99designs-blog.imgix.net/blog/wp-content/uploads/2019/06/attachment_91814252-e1559839133542.jpeg?auto=format&q=60&fit=max&w=930");
-        mNames.add("Movable Feast");
-        mImageUrls.add("https://99designs-blog.imgix.net/blog/wp-content/uploads/2019/06/attachment_65973336-e1560425151271.png?auto=format&q=60&fit=max&w=930");
-        mNames.add("The Hungry Gnome");
-        mImageUrls.add("https://99designs-blog.imgix.net/blog/wp-content/uploads/2019/06/attachment_57563454-e1559839436619.jpeg?auto=format&q=60&fit=max&w=930");
-        mNames.add("Chef Emme");
-        mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Mirissa-Fisheries-Harbor.jpg");
-        mNames.add("Mirissa");
-        mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Leopards.jpg");
-        mNames.add("Yala National Park");
-        mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Colombo.jpg");
-        mNames.add("Colombo");
-        mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Jaffna.jpg");
-        mNames.add("Jaffna");
-        mImageUrls.add("https://images-workbench.99static.com/KYwbd_Z-lrWKpJxwW7p6eECuvdE=/99designs-contests-attachments/77/77799/attachment_77799601");
-        mNames.add("Uprightman");
-        mImageUrls.add("https://images-workbench.99static.com/HkgPz8Y2csysmOyfjGa0_NL2NHY=/99designs-contests-attachments/96/96443/attachment_96443245");
-        mNames.add("Paris Chansons");
-        mImageUrls.add("https://images-workbench.99static.com/KFO6DofSiuRnnJ81eececSwQzVU=/http://s3.amazonaws.com/projects-files/45/4573/457382/38b2c101-d348-4590-8a18-ab4814a5071e.jpg");
-        mNames.add("Mrtorin");
-        mImageUrls.add("https://images-workbench.99static.com/b11bYTiU1oQAf2Qr2byjaNJrLRg=/99designs-contests-attachments/98/98733/attachment_98733481");
-        mNames.add("Musikfreunde");
-        mImageUrls.add("https://images-workbench.99static.com/C81MpyhDD08ZKz6hURSjoRDlVZU=/99designs-contests-attachments/106/106271/attachment_106271948");
-        mNames.add("Jason Penna");
-        mImageUrls.add("https://images-workbench.99static.com/siANVH9VCXARF5VlXlKnIh6mD0o=/99designs-contests-attachments/69/69854/attachment_69854609");
-        mNames.add("Dark Eyes");
 
-        initRecyclerView();
+    private void display(modelcatering modelcatering) {
+        Intent intent = new Intent(catering.this,onecater.class);
+        intent.putExtra("single_data",modelcatering);
+        startActivity(intent);
     }
-    private void initRecyclerView(){
-        Log.d(TAG, "initRecyclerView: started");
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(mNames,mImageUrls,this);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+    //@Override
+    public void onCaterClick(int position) {
+        display(caterModelarrlist.get(position));
     }
 }
 

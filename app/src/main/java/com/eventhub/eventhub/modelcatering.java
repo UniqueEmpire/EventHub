@@ -16,10 +16,12 @@ public class modelcatering implements Parcelable {
     private String des;
     private String opendays;
     private String location;
+    private String caterID;
+    private String logourl;
 
     public modelcatering() { }
 
-    public modelcatering(String comname, String manname, String manphnnum, String offlandnum, String offadd, String catertype, String deltype, String opentime, String clstime, String des, String opendays, String location) {
+    public modelcatering(String comname, String manname, String manphnnum, String offlandnum, String offadd, String catertype, String deltype, String opentime, String clstime, String des, String opendays, String location,String caterID,String logourl) {
         this.comname = comname;
         this.manname = manname;
         this.manphnnum = manphnnum;
@@ -32,6 +34,8 @@ public class modelcatering implements Parcelable {
         this.des = des;
         this.opendays = opendays;
         this.location = location;
+        this.caterID=caterID;
+        this.logourl=logourl;
     }
     protected modelcatering(Parcel in) {
         comname = in.readString();
@@ -46,6 +50,8 @@ public class modelcatering implements Parcelable {
         des = in.readString();
         opendays = in.readString();
         location = in.readString();
+        caterID = in.readString();
+        logourl = in.readString();
     }
 
     public static final Creator<modelcatering> CREATOR = new Creator<modelcatering>() {
@@ -59,6 +65,22 @@ public class modelcatering implements Parcelable {
             return new modelcatering[size];
         }
     };
+
+    public String getLogourl() {
+        return logourl;
+    }
+
+    public void setLogourl(String logourl) {
+        this.logourl = logourl;
+    }
+
+    public String getCaterID() {
+        return caterID;
+    }
+
+    public void setCaterID(String caterID) {
+        this.caterID = caterID;
+    }
 
     public String getComname() {
         return comname;
@@ -175,5 +197,7 @@ public class modelcatering implements Parcelable {
         dest.writeString(des);
         dest.writeString(opendays);
         dest.writeString(location);
+        dest.writeString(caterID);
+        dest.writeString(logourl);
     }
 }

@@ -14,9 +14,12 @@ import java.util.ArrayList;
 
 public class Home extends AppCompatActivity {
 
-    String url1 = "https://foodonbook.com/wp-content/uploads/2019/05/que-es-el-catering-en-un-evento.jpg";
-    String url2 = "https://qphs.fs.quoracdn.net/main-qimg-8e203d34a6a56345f86f1a92570557ba.webp";
-    String url3 = "https://bizzbucket.co/wp-content/uploads/2020/08/Life-in-The-Metro-Blog-Title-22.png";
+    String url1 = "https://images.unsplash.com/photo-1527751171053-6ac5ec50000b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80";
+    String url2 = "https://images.unsplash.com/photo-1517833969405-d4a24c2c8280?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80";
+    String url3 = "https://images.unsplash.com/photo-1524824267900-2fa9cbf7a506?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80";
+    String url4 = "https://images.unsplash.com/photo-1461784121038-f088ca1e7714?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80";
+    String url5 = "https://images.unsplash.com/photo-1552334823-ca7f70376914?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80";
+
     //ImageView imageView = findViewById(R.id.imageView);
 
     @Override
@@ -84,6 +87,8 @@ public class Home extends AppCompatActivity {
         sliderDataArrayList.add(new SliderData(url1));
         sliderDataArrayList.add(new SliderData(url2));
         sliderDataArrayList.add(new SliderData(url3));
+        sliderDataArrayList.add(new SliderData(url4));
+        sliderDataArrayList.add(new SliderData(url5));
         SliderAdapter adapter = new SliderAdapter(this, sliderDataArrayList);
         sliderView.setAutoCycleDirection(SliderView.LAYOUT_DIRECTION_LTR);
         sliderView.setSliderAdapter(adapter);

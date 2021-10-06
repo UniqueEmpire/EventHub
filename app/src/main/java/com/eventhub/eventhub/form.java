@@ -17,7 +17,7 @@ public class form extends AppCompatActivity implements AdapterView.OnItemSelecte
     //String compname, manaagername;
     //String managerphn,officephn,officeaddress,ofemail,
     String cat, del;
-    Spinner spin2;
+    Spinner spin,spin2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class form extends AppCompatActivity implements AdapterView.OnItemSelecte
         offadd = findViewById(R.id.et_address);
 
         //Getting the instance of Spinner and applying OnItemSelectedListener on it
-        Spinner spin = (Spinner) findViewById(R.id.spinner);
+        spin = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.catertype, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -125,7 +125,7 @@ public class form extends AppCompatActivity implements AdapterView.OnItemSelecte
             String msg = compname + "\n" + manaagername + "\n" + managerphn + "\n" + officephn + "\n" + officeaddress + "\n" + cat + "\n" + del;
             Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
             startActivity(intent);
-    }
+        }
 }
 
 
