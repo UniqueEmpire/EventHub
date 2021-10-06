@@ -50,7 +50,7 @@ public class profile2 extends AppCompatActivity {
     Button createbtn,changebtn,deletebtn;
     int time1hour, time2hour, time1min, time2min;
     String comname,manname,manphnnum,offlandnum,offadd,catertype,deltype,location,dwnloadurl;
-    private DatabaseReference databaseRef;
+    private DatabaseReference databaseRef,ddd;
     FirebaseDatabase firebaseDatabase;
     private StorageReference mStoreageRef;
     ProgressDialog progressDialog;
